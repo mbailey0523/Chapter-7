@@ -26,12 +26,12 @@ main PROC
 	mov eax,A			; set A to EAX
 	mov ebx,B			; set B to EBX
 	mov edx,result		; set result EDX
-	.WHILE B > 0		; while B is less than 0
-		shl eax,2			; double A
-		shr ebx,2			; half B
-		.IF ; if B is odd	; test parity flag
+	.WHILE ebx > 0		; while B is less than 0
+		shr ebx,1			; half B
+		.IF PARITY?		; test parity flag
 			add edx,eax		; set result to result + A
 		.ENDIF
+		shl eax,1			; double A
 	.ENDW
 	invoke ExitProcess,0
 main endp
